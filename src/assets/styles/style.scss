@@ -62,3 +62,24 @@ body {
     min-height: 200px;
   }
 }
+
+// BIG DEVICES
+@media (max-width: 992px) {
+  .cloud.outer {
+    display: none;
+  }
+}
+
+// MEDIUM DEVICES
+@media (max-width: 768px) {
+  .cloud.middle {
+    display: none;
+  }
+}
+
+// SMALL DEVICES
+@media (max-width: 576px) {
+  .cloud.inner {
+    display: none;
+  }
+}
