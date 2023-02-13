@@ -11,4 +11,8 @@ export default class Dom {
   static addChildrenTo(element, children) {
     children.forEach((child) => element.appendChild(child))
   }
+
+  static byId(id) {
+    return document.getElementById(id)
+  }
 }

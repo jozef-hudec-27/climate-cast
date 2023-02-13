@@ -1,3 +1,6 @@
+@use './utilities';
+@import './config';
+
 @font-face {
   font-family: 'pokemon';
   src: url('../fonts/pokemon_solid-webfont.woff2') format('woff2'),
@@ -19,11 +22,11 @@ body {
   align-items: center;
 
   h1 {
-    font-family: pokemon;
+    font-family: pokemon, sans-serif;
     font-size: 2rem;
     letter-spacing: 7px;
-    color: rgb(14, 177, 14);
-    text-shadow: 3px 6px 0 lighten(rgb(14, 177, 14), 33%);
+    color: $main-green;
+    text-shadow: 3px 6px 0 lighten($main-green, 33%);
   }
 
   .logo {
@@ -60,6 +63,43 @@ body {
     border: 1px solid blue;
     min-width: 200px;
     min-height: 200px;
+  }
+}
+
+#search-city {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  input {
+    @extend %reset-appearance;
+
+    width: 33%;
+    height: 30px;
+    border-radius: 999px;
+    padding: 0 12px;
+    outline: 4px solid $main-green;
+    background-color: lighten($main-orange, 5%);
+
+    &:focus {
+      width: 35%;
+    }
+  }
+
+  button {
+    @extend %reset-appearance;
+
+    cursor: pointer;
+    font-family: pokemon, sans-serif;
+    letter-spacing: 2px;
+    color: $main-green;
+    text-shadow: 2px 2px 0 lighten($main-green, 33%);
+
+    &:focus,
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 
