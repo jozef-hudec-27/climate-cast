@@ -16,8 +16,8 @@ export default class OpenWeatherMap {
     return data
   }
 
-  static weatherForecastAPI = async (lat, lon) => {
-    const url = this.getUrlFor(`/data/2.5/forecast?lat=${lat}&lon=${lon}`)
+  static weatherForecastAPI = async (lat, lon, unit = 'metric') => {
+    const url = this.getUrlFor(`/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${unit}`)
 
     const response = await fetch(url)
     const data = await response.json()

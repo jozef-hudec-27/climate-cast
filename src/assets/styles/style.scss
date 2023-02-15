@@ -143,6 +143,21 @@ p {
   }
 }
 
+#charts {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#unit-radio-container {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+
+  .unit-wrapper {
+    display: inline-block;
+  }
+}
+
 // BIG DEVICES
 @media (max-width: 992px) {
   .cloud.outer {
