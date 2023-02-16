@@ -3,7 +3,7 @@ import OpenWeatherMap from './open_weather_map'
 import Dom from './dom_controller'
 import paintForecastPage from './pages/forecast'
 
-paintForecastPage(51.5085, -0.1257) // London lat, lon
+paintForecastPage(62.0274078, 129.7319787) // Yakutsk lat, lon
 
 Dom.byId('search-city')?.addEventListener('submit', (e) => {
   e.preventDefault()

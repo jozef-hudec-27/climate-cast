@@ -46,6 +46,13 @@ export default async function paintForecastPage(lat, lon, unit = 'metric') {
   for (let i = 0; i < days.length; i++) {
     let day = days[i]
 
+    let avgTemp = day.reduce((sum, current) => sum + current.main.temp, 0) / 8
+
+    let highTemp = unit === 'metric' ? 20 : 20 * 1.8 + 32
+    let lowTemp = unit === 'metric' ? 10 : 10 * 1.8 + 32
+    let color = avgTemp > highTemp ? 'rgb(14, 177, 14)' : avgTemp < lowTemp ? 'rgb(255, 0, 0)' : 'rgb(253, 197, 103)'
+    // green, red, orange
+
     let data = day.map((hourlyInfo) => {
       return { time: format(new Date(hourlyInfo.dt_txt), 'dd MMM H:mm'), temp: hourlyInfo.main.temp }
     })
@@ -58,10 +65,20 @@ export default async function paintForecastPage(lat, lon, unit = 'metric') {
         labels: data.map((hour) => hour.time),
         datasets: [
           {
-            label: 'Temperature [°C]',
+            label: `Temperature [°${{ metric: 'C', imperial: 'F' }[unit]}]`,
             data: data.map((hour) => hour.temp),
+            borderColor: color,
+            backgroundColor: color,
           },
         ],
+      },
+      options: {
+        plugins: {
+          subtitle: {
+            display: true,
+            text: `Avg: ${Math.round(avgTemp * 100) / 100}°`,
+          },
+        },
       },
     })
   }
