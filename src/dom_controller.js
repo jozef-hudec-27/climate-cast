@@ -15,4 +15,13 @@ export default class Dom {
   static byId(id) {
     return document.getElementById(id)
   }
+
+  // removes all elements except navbar and script tag
+  static clear() {
+    Array.from(document.body.children).forEach((child) => {
+      if (!['script', 'nav'].includes(child.localName)) {
+        child.remove()
+      }
+    })
+  }
 }

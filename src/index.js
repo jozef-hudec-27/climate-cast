@@ -1,30 +1,16 @@
 import './assets/styles/style.scss'
-import OpenWeatherMap from './open_weather_map'
 import Dom from './dom_controller'
-import paintForecastPage from './pages/forecast'
+import searchCityForm from './components/search_city_form'
 
-paintForecastPage(62.0274078, 129.7319787) // Yakutsk lat, lon
+function paintHomePage() {
+  Dom.addChildrenTo(document.body, [searchCityForm(), Dom.newElement('div', [], 'cities')])
 
-Dom.byId('search-city')?.addEventListener('submit', (e) => {
-  e.preventDefault()
+  Dom.byId('nav-logo')?.addEventListener('click', (e) => {
+    e.preventDefault()
 
-  OpenWeatherMap.geoCodingAPI(Dom.byId('city-input').value).then(async (cities) => {
-    Dom.byId('cities').innerHTML = ''
-    cities.forEach((city) => {
-      let container = Dom.newElement('button', ['city'], '')
-      let flag = Dom.newElement('img')
-      flag.src = `https://www.countryflagicons.com/FLAT/24/${city.country.toUpperCase()}.png`
-      flag.alt = `${city.country.toUpperCase()} flag`
-      let heading = Dom.newElement('h2', [], '', city.name)
-
-      container.addEventListener('click', () => {
-        Dom.byId('cities').remove()
-        Dom.byId('search-city').remove()
-        paintForecastPage(city.lat, city.lon)
-      })
-
-      Dom.addChildrenTo(container, [flag, heading])
-      Dom.byId('cities').appendChild(container)
-    })
+    Dom.clear()
+    paintHomePage()
   })
-})
+}
+
+paintHomePage()
