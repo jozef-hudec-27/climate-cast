@@ -8,3 +8,5 @@ In a nutshell, this app:
 - Demonstrates knowledge of utilizing 3rd-party APIs and asynchronous patterns in JavaScript.
 
 Cloud icon: https://commons.wikimedia.org/wiki/Category:SVG_cloud_icons#/media/File:Antu_folder-owncloud.svg
+
+[See it live](https://jozef-hudec-27.github.io/climate-cast/)
