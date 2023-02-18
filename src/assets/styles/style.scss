@@ -107,6 +107,26 @@ p {
   }
 }
 
+.loader {
+  width: 36px;
+  height: 36px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: block;
+  animation: rotation 1s linear infinite;
+  align-self: center;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 #search-city {
   margin: 0 auto;
   display: flex;
@@ -244,5 +264,9 @@ p {
 
   #cities {
     margin-top: 18px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
   }
 }

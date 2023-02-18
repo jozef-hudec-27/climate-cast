@@ -31,10 +31,12 @@ export default async function paintForecastPage(cityName, lat, lon, unit = 'metr
   })
 
   const charts = Dom.newElement('section', [], 'charts')
+  charts.prepend(Dom.newElement('span', ['loader'], 'loader'))
 
   Dom.addChildrenTo(document.body, [unitRadioContainer, charts])
 
   const weatherData = await OpenWeatherMap.weatherForecastAPI(lat, lon, unit)
+  Dom.byId('loader').remove()
   const days = [[]]
 
   for (let day of weatherData.list) {
@@ -52,7 +54,7 @@ export default async function paintForecastPage(cityName, lat, lon, unit = 'metr
 
     let highTemp = unit === 'metric' ? 20 : 20 * 1.8 + 32
     let lowTemp = unit === 'metric' ? 10 : 10 * 1.8 + 32
-    let color = avgTemp > highTemp ? 'rgb(14, 177, 14)' : avgTemp < lowTemp ? 'rgb(255, 0, 0)' : 'rgb(253, 197, 103)'
+    let color = avgTemp > highTemp ? 'rgb(14, 177, 14' : avgTemp < lowTemp ? 'rgb(255, 0, 0' : 'rgb(253, 197, 103'
     // green, red, orange
 
     let data = day.map((hourlyInfo) => {
@@ -69,8 +71,10 @@ export default async function paintForecastPage(cityName, lat, lon, unit = 'metr
           {
             label: `Temperature [°${{ metric: 'C', imperial: 'F' }[unit]}]`,
             data: data.map((hour) => hour.temp),
-            borderColor: color,
-            backgroundColor: color,
+            borderColor: color + ')',
+            backgroundColor: `${color}, 0.4)`,
+            fill: true,
+            cubicInterpolationMode: 'monotone'
           },
         ],
       },
