@@ -3,7 +3,9 @@ import Dom from '../dom_controller'
 import OpenWeatherMap from '../open_weather_map'
 import { format } from 'date-fns'
 
-export default async function paintForecastPage(lat, lon, unit = 'metric') {
+export default async function paintForecastPage(cityName, lat, lon, unit = 'metric') {
+  Dom.byId('page-title').textContent = `ClimateCast - ${cityName}`
+
   const unitRadioContainer = Dom.newElement('div', [], 'unit-radio-container')
   const units = [
     ['celsius', 'metric'],
@@ -19,7 +21,7 @@ export default async function paintForecastPage(lat, lon, unit = 'metric') {
     inp.addEventListener('click', () => {
       Dom.byId('charts').remove()
       Dom.byId('unit-radio-container').remove()
-      paintForecastPage(lat, lon, u[1])
+      paintForecastPage(cityName, lat, lon, u[1])
     })
     let label = Dom.newElement('label', [], '', u[0])
     label.setAttribute('for', u[0])

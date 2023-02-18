@@ -205,6 +205,23 @@ p {
   }
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: $bg-blue;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $main-green;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: darken($main-orange, 10%);
+}
+
 // BIG DEVICES
 @media (max-width: 992px) {
   .cloud.outer {

@@ -30,7 +30,7 @@ export default function searchCityForm() {
         container.addEventListener('click', () => {
           Dom.byId('cities').remove()
           Dom.byId('search-city').remove()
-          paintForecastPage(city.lat, city.lon)
+          paintForecastPage(city.name, city.lat, city.lon)
         })
 
         Dom.addChildrenTo(container, [flag, heading])
