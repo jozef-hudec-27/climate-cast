@@ -25,9 +25,10 @@ export default function searchCityForm() {
         Dom.byId('cities').innerHTML = ''
         cities.forEach((city) => {
           let container = Dom.newElement('button', ['city'], '')
-          let flag = Dom.newElement('img')
-          flag.src = `https://www.countryflagicons.com/FLAT/24/${city.country.toUpperCase()}.png`
-          flag.alt = `${city.country.toUpperCase()} flag`
+          let flag = Dom.newElement('span')
+          flag.classList.add('fi', `fi-${city.country}`)
+          flag.role = 'img'
+          flag.setAttribute('aria-label', `${city.country.toUpperCase()} flag`)
           let heading = Dom.newElement('h2', [], '', city.name)
 
           container.addEventListener('click', () => {
